@@ -75,4 +75,58 @@ public class Sorts
            tmpInd++;
        }
 	}
+
+	public static void quicksort(int[] list, int N){
+		quicksort(list, 0, N-1);
+	}
+
+	private static void quicksort(int[] list, int first, int last){
+		if(first < last){ // must be more than one element
+			setPivotToEnd(list, first, last);
+			int pivotIndex = splitList(list, first, last);
+			quicksort(list, first, pivotIndex - 1);
+			quicksort(list, pivotIndex + 1, last);
+		}
+	}
+
+	private static void setPivotToEnd(int[] array, int left, int right){
+		if(right - left <= 2){ // If only 2 entries, put smaller first
+			if(array[right] < array[left]){
+				int temp = array[left];
+				array[left] = array[right];
+				array[right] = temp;
+			}
+			return;
+		}
+		int[] compare = {array[left], array[left + ((right - left) / 2)], array[right]};
+		selectionSort(compare, 3);
+		array[left] = compare[0]; // left number is lowest of the three
+		array[right] = compare[1]; // center number is highest of the three
+		array[left + ((right - left) / 2)] = compare[2]; // right number is middle of the three
+	}
+
+	private static int splitList(int[] array, int left, int right){
+		int indexLeft = left;
+		int indexRight = right - 1;
+		int pivot = right;
+		while(indexLeft <= indexRight){
+			while(array[indexLeft] < array[pivot]){
+				indexLeft++;
+			}
+			while(array[indexRight] > array[pivot] && indexRight >= indexLeft){
+				indexRight--;
+			}
+			if(indexLeft <= indexRight){
+				int temp = array[indexLeft];
+				array[indexLeft] = array[indexRight];
+				array[indexRight] = temp;
+				indexLeft++;
+				indexRight--;
+			}
+		}
+		int temp = array[pivot];
+		array[pivot] = array[indexLeft];
+		array[indexLeft] = temp;
+		return indexLeft;
+	}
 }
