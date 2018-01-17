@@ -108,12 +108,12 @@ public class Sorts
 	private static int splitList(int[] array, int left, int right){
 		int indexLeft = left;
 		int indexRight = right - 1;
-		int pivot = right;
+		int pivot = array[right];
 		while(indexLeft <= indexRight){
-			while(array[indexLeft] < array[pivot]){
+			while(array[indexLeft] < pivot){
 				indexLeft++;
 			}
-			while(array[indexRight] > array[pivot] && indexRight >= indexLeft){
+			while(array[indexRight] > pivot && indexRight >= indexLeft){
 				indexRight--;
 			}
 			if(indexLeft <= indexRight){
@@ -124,8 +124,8 @@ public class Sorts
 				indexRight--;
 			}
 		}
-		int temp = array[pivot];
-		array[pivot] = array[indexLeft];
+		int temp = array[right];
+		array[right] = array[indexLeft];
 		array[indexLeft] = temp;
 		return indexLeft;
 	}
