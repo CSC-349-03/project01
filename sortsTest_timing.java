@@ -22,25 +22,25 @@ public class sortsTest_timing
          {
          	for (int k = 0; k < 5; k++)
          	{
-      	       rand = (random.nextInt(320000) + 1);
-               selection[i] = rand;
-               merge[i] = rand;
-               quick[i] = rand;
-               long start = System.nanoTime();
-               Sorts.selectionSort(selection, i);
-               long end = System.nanoTime();
-               long selectionTime = (end - start)/1000000;
-               start = System.nanoTime();
-               Sorts.mergeSort(merge, i);
-               end = System.nanoTime();
-               long mergeTime = (end - start)/1000000;
-               start = System.nanoTime();
-               Sorts.quicksort(quick, i);
-               end = System.nanoTime();
-               long quickTime = (end - start)/1000000;
-               System.out.println("N = " + i + ": T_ss = " + selectionTime + ", T_ms = " + mergeTime + "T_qs = " + quickTime);
-            }
-            System.out.println("");
+             rand = (random.nextInt(320000) + 1);
+             selection[i] = rand;
+             merge[i] = rand;
+             quick[i] = rand;
+             long start = System.nanoTime();
+             Sorts.selectionSort(selection, i);
+             long end = System.nanoTime();
+             long selectionTime = (end - start)/1000000;
+             start = System.nanoTime();
+             Sorts.mergeSort(merge, i);
+             end = System.nanoTime();
+             long mergeTime = (end - start)/1000000;
+             start = System.nanoTime();
+             Sorts.quicksort(quick, i);
+             end = System.nanoTime();
+             long quickTime = (end - start)/1000000;
+             System.out.println("N = " + i + ": T_ss = " + selectionTime + ", T_ms = " + mergeTime + "T_qs = " + quickTime);
+             System.out.println();
+         }
          }
       }
    }
