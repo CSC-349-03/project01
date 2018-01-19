@@ -23,7 +23,7 @@ public class sortsTest
          merge[i] = rand;
          quick[i] = rand;
          System.out.println(rand);
-      }
+      } // TODO: Check every sorting algorithm
       sortsTest.checkSorted(merge, 25);
       Sorts.selectionSort(selection, 25);
       Sorts.mergeSort(merge, 25);

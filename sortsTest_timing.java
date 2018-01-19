@@ -13,7 +13,7 @@ public class sortsTest_timing
    {
       int[] selection = new int[160000];
       int[] merge = new int[160000];
-      int[] quick = new quick[160000]
+      int[] quick = new int[160000];
       int rand = 0;
       Random random = new Random();
       for (int i = 5000; i <= 160000; i*=2)
@@ -26,18 +26,18 @@ public class sortsTest_timing
                selection[i] = rand;
                merge[i] = rand;
                quick[i] = rand;
-               int start = System.nanoTime();
+               long start = System.nanoTime();
                Sorts.selectionSort(selection, i);
-               int end = System.nanoTime();
-               int selectionTime = (end - start)/1000000;
+               long end = System.nanoTime();
+               long selectionTime = (end - start)/1000000;
                start = System.nanoTime();
                Sorts.mergeSort(merge, i);
                end = System.nanoTime();
-               int mergeTime = (end - start)/1000000;
+               long mergeTime = (end - start)/1000000;
                start = System.nanoTime();
-               Sorts.quickSort(quick, i);
+               Sorts.quicksort(quick, i);
                end = System.nanoTime();
-               int quickTime = (end - start)/1000000;
+               long quickTime = (end - start)/1000000;
                System.out.println("N = " + i + ": T_ss = " + selectionTime + ", T_ms = " + mergeTime + "T_qs = " + quickTime);
             }
             System.out.println("");
