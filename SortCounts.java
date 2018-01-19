@@ -8,42 +8,33 @@
 import java.security.InvalidParameterException;
 import java.util.Random;
 
-public class SortTimes {
-    private static int[] selectArray = new int[160000];
-    private static int[] mergeArray = new int[160000];
-    private static int[] quickArray = new int[160000];
+public class SortCounts {
+    private static int[] selectArray = new int[12800];
+    private static int[] mergeArray = new int[12800];
+    private static int[] quickArray = new int[12800];
 
     public static void main(String[] args){
-        long startTime;
-        long endTime;
-        for (int testLength = 5000; testLength <= 160000; testLength*=2) { // Go through every possible array size
-            for (int i = 0; i < 5; i++) { // Run each test 5 times
+        for (int testLength = 100; testLength <= 12800; testLength*=2) { // Go through every possible array size
+            float selectTotal = 0;
+            float mergeTotal = 0;
+            float quickTotal = 0;
+            for (int i = 0; i < 100 ; i++) { // Run each test 5 times
                 generateRand(testLength); // Generate random arrays
                 // Save start time, run sort, save end time, note duration
-                startTime = System.nanoTime();
-                Sorts.selectionSort(selectArray, testLength);
-                endTime = System.nanoTime();
-                long selectionTime = (endTime - startTime) / 1000000;
+                selectTotal += Sorts1.selectionSort(selectArray, testLength);
                 if(!checkSorted(selectArray, testLength)) {
                     System.out.println("ERROR: List not sorted!");
                 }
-                startTime = System.nanoTime();
-                Sorts.mergeSort(mergeArray, testLength);
-                endTime = System.nanoTime();
-                long mergeTime = (endTime - startTime) / 1000000;
+                mergeTotal += Sorts1.mergeSort(mergeArray, testLength);
                 if(!checkSorted(mergeArray, testLength)) {
                     System.out.println("ERROR: List not sorted!");
                 }
-                startTime = System.nanoTime();
-                Sorts.quicksort(quickArray, testLength);
-                endTime = System.nanoTime();
-                long quickTime = (endTime - startTime) / 1000000;
+                quickTotal += Sorts1.quicksort(quickArray, testLength);
                 if(!checkSorted(quickArray, testLength)) {
                     System.out.println("ERROR: List not sorted!");
                 }
-                System.out.println("N = " + testLength + ": T_ss = " + selectionTime + ", T_ms = " + mergeTime + ", T_qs = " + quickTime);
             }
-            System.out.println();
+            System.out.println("N = " + testLength + ": T_ss = " + selectTotal/100 + ", T_ms = " + mergeTotal/100 + ", T_qs = " + quickTotal/100);
         }
     }
 
