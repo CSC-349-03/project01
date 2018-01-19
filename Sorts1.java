@@ -1,8 +1,8 @@
 /*  David Twyman, Andrew LeDawson
- **  dtwyman@calpoly.edu, aledawson@calpoly.edu
+ **  dtwyman@calpoly.edu, aledawso@calpoly.edu
  **  CSC 349-03
  **  Project 1
- **  1-10-2018
+ **  1-19-2018
  */
 
 public class Sorts1
